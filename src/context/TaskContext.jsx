@@ -1,10 +1,24 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useReducer, useEffect } from 'react';
 import { taskReducer, initialState } from '../reducer/taskReducer';
 
 const TaskContext = createContext(null);
+const STORAGE_KEY = 'task-manager-state';
+
+function loadInitialState() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : initialState;
+  } catch {
+    return initialState;
+  }
+}
 
 export function TaskProvider({ children }) {
-  const [state, dispatch] = useReducer(taskReducer, initialState);
+  const [state, dispatch] = useReducer(taskReducer, initialState, loadInitialState);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }, [state]);
 
   const filteredTasks =
     state.filter === 'all'
