@@ -62,3 +62,6 @@ src/
 ```
 
 Routes: `/` redirects to `/tasks`, `/tasks` shows the list, `/tasks/:id` shows a single task's detail/edit view.
+
+## AI Tool Usage Disclosure
+This project was built with the assistance of Claude Code. I used it as a teaching tool to understand each of the code lines and build each components out myself.
