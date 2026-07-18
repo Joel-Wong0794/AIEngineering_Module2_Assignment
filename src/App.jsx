@@ -3,6 +3,7 @@ import { TaskProvider } from './context/TaskContext';
 import Header from './components/Header';
 import TaskListPage from './pages/TaskListPage';
 import TaskDetailPage from './pages/TaskDetailPage';
+import './App.css';
 
 function App() {
   return (

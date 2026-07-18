@@ -2,7 +2,7 @@
   max-width: 720px;
   margin: 0 auto;
   min-height: 100vh;
-  padding: 0 24px 48px;
+  padding: 3% 4%;
 }
 
 header {
@@ -25,8 +25,9 @@ form > div {
 }
 
 form {
+  max-width: 420px;
+  margin: 0 auto 16px;
   padding: 16px;
-  margin-bottom: 16px;
   background: var(--color-canvas-default);
   border: 1px solid var(--color-border-muted);
   border-radius: 6px;
@@ -40,17 +41,26 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 li {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
+  gap: 16px;
+  padding: 14px 16px;
+  background: var(--color-canvas-default);
   border: 1px solid var(--color-border-muted);
   border-radius: 6px;
-  margin-bottom: 8px;
   color: var(--color-fg-muted);
+  transition: border-color 0.15s, background 0.15s;
+}
+
+li:hover {
+  border-color: var(--color-border-default);
+  background: var(--color-btn-bg);
 }
 
 li a {
@@ -60,4 +70,17 @@ li a {
 
 li button {
   margin-left: auto;
+  flex-shrink: 0;
+}
+
+[data-priority='low'] {
+  color: var(--color-success-fg);
+}
+
+[data-priority='medium'] {
+  color: var(--color-attention-fg);
+}
+
+[data-priority='high'] {
+  color: var(--color-danger-fg);
 }

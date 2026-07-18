@@ -14,7 +14,7 @@ function TaskList() {
         <li key={task.id}>
           <Link to={`/tasks/${task.id}`}>{task.title}</Link>
           {' — '}
-          {task.status} / {task.priority}
+          {task.status} / <span data-priority={task.priority}>{task.priority}</span>
           <button onClick={() => deleteTask(task.id)}>Delete</button>
         </li>
       ))}
