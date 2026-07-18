@@ -91,7 +91,7 @@ function TaskDetailPage() {
       <h2>{task.title}</h2>
       <p>{task.description}</p>
       <p>Status: {task.status}</p>
-      <p>Priority: {task.priority}</p>
+      <p>Priority: <span data-priority={task.priority}>{task.priority}</span></p>
       <button onClick={startEditing}>Edit</button>
       <Link to="/tasks">Back to tasks</Link>
     </div>
