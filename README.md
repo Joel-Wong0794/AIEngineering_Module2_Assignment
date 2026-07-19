@@ -27,7 +27,8 @@ npm run preview  # preview the production build locally
 ## Features
 
 - View all tasks in a list, each showing title, status, and priority
-- Filter the list by status (All / To do / In progress / Done)
+- Filter the list by status and priority at the same time (both filters combine with AND logic)
+- Reorder tasks by dragging and dropping rows in the list
 - Add a new task via a form (title, description, status, priority)
 - Delete a task
 - View a task's full details on its own page (`/tasks/:id`)
@@ -43,12 +44,16 @@ npm run preview  # preview the production build locally
 - State persists to `localStorage` — tasks and the active filter survive a page reload
 - Tasks can be edited in place from the detail page (`UPDATE_TASK` action + inline edit form)
 
+**Hard**
+- Combined status + priority filtering — both filters can be active simultaneously (`priorityFilter` state + `SET_PRIORITY_FILTER` action, AND-combined when deriving `filteredTasks`)
+- Drag-and-drop task reordering using native HTML5 drag events, no library (`REORDER_TASKS` action repositions tasks by id in the underlying array, so the new order persists to `localStorage` and stays correct even when reordering while a filter is active)
+
 ## Architecture
 
 ```
 src/
 ├── reducer/
-│   ├── taskReducer.js       Pure reducer: ADD_TASK, DELETE_TASK, UPDATE_TASK, SET_FILTER
+│   ├── taskReducer.js       Pure reducer: ADD_TASK, DELETE_TASK, UPDATE_TASK, SET_FILTER, SET_PRIORITY_FILTER, REORDER_TASKS
 │   └── taskReducer.test.js  Unit tests (test-first for every action)
 ├── context/
 │   └── TaskContext.jsx      TaskProvider + useTasks() hook; persists state to localStorage
@@ -65,4 +70,4 @@ src/
 Routes: `/` redirects to `/tasks`, `/tasks` shows the list, `/tasks/:id` shows a single task's detail/edit view.
 
 ## AI Tool Usage Disclosure
-This project was built with the assistance of Claude Code. I used it as a teaching tool to understand each of the code lines and build each components out myself.
+This project was built with the assistance of Claude Code. I used it as a teaching tool to understand each of concepts, scripts and eventually build up each components out myself.
