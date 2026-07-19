@@ -31,6 +31,7 @@ export function TaskProvider({ children }) {
   const updateTask = (task) => dispatch({ type: 'UPDATE_TASK', payload: task });
   const setFilter = (filter) => dispatch({ type: 'SET_FILTER', payload: filter });
   const setPriorityFilter = (priorityFilter) => dispatch({ type: 'SET_PRIORITY_FILTER', payload: priorityFilter });
+  const reorderTasks = (draggedId, targetId) => dispatch({ type: 'REORDER_TASKS', payload: { draggedId, targetId } });
 
   const value = {
     tasks: state.tasks,
@@ -42,6 +43,7 @@ export function TaskProvider({ children }) {
     updateTask,
     setFilter,
     setPriorityFilter,
+    reorderTasks,
   };
 
   return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;

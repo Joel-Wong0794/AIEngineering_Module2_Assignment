@@ -63,6 +63,10 @@ li:hover {
   background: var(--color-btn-bg);
 }
 
+li.dragging {
+  opacity: 0.5;
+}
+
 li a {
   font-weight: 600;
   color: var(--color-fg-default);

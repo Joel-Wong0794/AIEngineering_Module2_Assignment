@@ -37,4 +37,39 @@ describe('taskReducer', () => {
     const result = taskReducer(initialState, { type: 'NOT_A_REAL_ACTION' });
     expect(result).toBe(initialState);
   });
+
+  it('reorders tasks on REORDER_TASKS, moving the dragged task before the target', () => {
+    // id 1 is at index 0, id 3 is at index 2 — removing id 1 shifts id 3
+    // down to index 1, which is the case that catches a stale-index bug.
+    const result = taskReducer(initialState, {
+      type: 'REORDER_TASKS',
+      payload: { draggedId: 1, targetId: 3 },
+    });
+    expect(result.tasks.map((t) => t.id)).toEqual([2, 1, 3, 4, 5, 6]);
+  });
+
+  it('reorders tasks on REORDER_TASKS when dragging backward in the list', () => {
+    const result = taskReducer(initialState, {
+      type: 'REORDER_TASKS',
+      payload: { draggedId: 4, targetId: 2 },
+    });
+    expect(result.tasks.map((t) => t.id)).toEqual([1, 4, 2, 3, 5, 6]);
+  });
+
+  it('returns state unchanged when dragging a task onto itself', () => {
+    const result = taskReducer(initialState, {
+      type: 'REORDER_TASKS',
+      payload: { draggedId: 1, targetId: 1 },
+    });
+    expect(result).toBe(initialState);
+  });
+
+  it('returns state unchanged when the target id does not exist', () => {
+    const result = taskReducer(initialState, {
+      type: 'REORDER_TASKS',
+      payload: { draggedId: 1, targetId: 999 },
+    });
+    expect(result).toBe(initialState);
+  });
+
 });

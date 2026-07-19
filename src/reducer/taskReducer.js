@@ -30,7 +30,23 @@ export function taskReducer(state, action) {
 
     case 'SET_PRIORITY_FILTER':
       return { ...state, priorityFilter: action.payload };
-      
+
+    case 'REORDER_TASKS': {
+      const { draggedId, targetId } = action.payload;
+      if (draggedId === targetId) return state;
+
+      const tasks = [...state.tasks];
+      const draggedIndex = tasks.findIndex((task) => task.id === draggedId);
+      if (draggedIndex === -1) return state;
+
+      const [draggedTask] = tasks.splice(draggedIndex, 1);
+      const targetIndex = tasks.findIndex((task) => task.id === targetId);
+      if (targetIndex === -1) return state;
+
+      tasks.splice(targetIndex, 0, draggedTask);
+      return { ...state, tasks };
+    }
+    
     default:
       return state;
   }
