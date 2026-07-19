@@ -1,7 +1,7 @@
 import { useTasks } from '../context/TaskContext';
 
 function FilterBar() {
-  const { filter, setFilter } = useTasks();
+  const { filter, setFilter, priorityFilter, setPriorityFilter } = useTasks();
 
   return (
     <div>
@@ -11,6 +11,18 @@ function FilterBar() {
         <option value="todo">To do</option>
         <option value="in-progress">In progress</option>
         <option value="done">Done</option>
+      </select>
+
+      <label htmlFor="priority-filter-select">Filter by priority: </label>
+      <select
+        id="priority-filter-select"
+        value={priorityFilter}
+        onChange={(e) => setPriorityFilter(e.target.value)}
+      >
+        <option value="all">All</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
       </select>
     </div>
   );

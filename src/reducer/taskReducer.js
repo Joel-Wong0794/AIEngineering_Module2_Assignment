@@ -8,6 +8,7 @@ export const initialState = {
     { id: 6, title: 'Update CRM documentation', description: 'Document new pipeline stages for the team', status: 'done', priority: 'low' },
   ],
   filter: 'all',
+  priorityFilter: 'all',
 };
 
 export function taskReducer(state, action) {
@@ -27,6 +28,9 @@ export function taskReducer(state, action) {
     case 'SET_FILTER':
       return { ...state, filter: action.payload };
 
+    case 'SET_PRIORITY_FILTER':
+      return { ...state, priorityFilter: action.payload };
+      
     default:
       return state;
   }

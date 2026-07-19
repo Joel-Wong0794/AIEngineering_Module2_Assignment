@@ -28,6 +28,11 @@ describe('taskReducer', () => {
     expect(result.filter).toBe('done');
   });
 
+  it('sets the priority filter on SET_PRIORITY_FILTER', () => {
+    const result = taskReducer(initialState, { type: 'SET_PRIORITY_FILTER', payload: 'high' });
+    expect(result.priorityFilter).toBe('high');
+  });
+  
   it('returns state unchanged for an unknown action', () => {
     const result = taskReducer(initialState, { type: 'NOT_A_REAL_ACTION' });
     expect(result).toBe(initialState);
