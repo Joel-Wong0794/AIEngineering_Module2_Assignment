@@ -1,5 +1,5 @@
 # Task Manager (Module 2 Assignment)
-<img width="1277" height="657" alt="image" src="https://github.com/user-attachments/assets/277f945b-4084-4c07-ac42-ebb5862f08a5" />
+<img width="617" height="887" alt="image" src="https://github.com/user-attachments/assets/e418f407-5240-4530-aa9a-19a3a4f3370e" />
 
 A React "Task Manager" app built for a Module 2 (Frontend Development) course assignment. Demonstrates `useReducer` for state management, `useContext` for sharing state/dispatch across the component tree, and client-side routing with React Router.
 
