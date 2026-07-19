@@ -1,7 +1,7 @@
-# Task Manager (Module 2 Assignment)
+# Task Manager
 <img width="617" height="887" alt="image" src="https://github.com/user-attachments/assets/e418f407-5240-4530-aa9a-19a3a4f3370e" />
 
-A React "Task Manager" app built for a Module 2 (Frontend Development) course assignment. Demonstrates `useReducer` for state management, `useContext` for sharing state/dispatch across the component tree, and client-side routing with React Router.
+A React "Task Manager" app built for a Frontend Development course assignment. Demonstrates `useReducer` for state management, `useContext` for sharing state/dispatch across the component tree, and client-side routing with React Router.
 
 ## Tech stack
 
@@ -34,7 +34,7 @@ npm run preview  # preview the production build locally
 - View a task's full details on its own page (`/tasks/:id`)
 - Edit a task's details inline from the detail page
 
-## Bonus features implemented
+## Additional features implemented ("Bonus Challenges")
 
 **Easy**
 - Task count summary ("Showing X of Y tasks") that updates with the active filter
